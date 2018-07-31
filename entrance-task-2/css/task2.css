@@ -5,7 +5,7 @@ body{
     /*padding-top: 35px;*/
 }
 header{
-    /*background-color: coral;*/
+    background-color: coral;
     border-bottom: solid #F0F0F0 1px;
     position: absolute;
     top: 0px;
@@ -22,6 +22,8 @@ main{
     top: 98px;
     left: 0px;
     right: 0px;
+    padding-left: 40px;
+    margin-top:29px;
     overflow: hidden;
 }
 footer{
@@ -36,15 +38,8 @@ footer{
     padding-left: 40px;
     padding-top: 24.5px;
 }
-a:hover{
-cursor: pointer;
-color: rgb(255,89,89);
-}
-a:active{
-color: red;
-}
 .footerpart{
-    background-color: Oldlace;
+    /*background-color: Oldlace;*/
     color: rgba(133,133,133,1);
     opacity: 0.6;
     float: left;
@@ -55,12 +50,20 @@ color: red;
 }
 .footerpart:hover{
     color: rgb(255,89,89);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 .footerpart:active{
     color: red;
     opacity: 1;
 }
+a:hover{
+/*cursor: pointer;*/
+color: rgb(255,89,89);
+}
+a:active{
+color: red;
+}
+/*HEADER*/
 #logo{
     /*background-color: green;*/
     background-image: url(../img/logo.svg);
@@ -90,7 +93,7 @@ color: red;
 }
 .menupart:hover{
     color: rgb(255,89,89);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 .menupart:active{
     color: red;
@@ -100,18 +103,18 @@ color: red;
     color: #333333;
     opacity: 1;
 }
-
-#device{
+/*DEVICE*/
+#device-info{
     background-color: cadetblue;
     float: left;
     width: 100%;
 }
-.device-favored{
+.device{
     background-color: rgba(247,247,247,1);
     border-radius: 20px;
     float: left;
-    width: 200px;
-    height: 120px;
+    width: 170px;
+    height: 90px;
     margin-right: 15px;
     padding: 15px;
 }
@@ -128,11 +131,14 @@ color: red;
     font-size: 13px;
     font-weight: bold;
 }
+/*.device-menupart:hover{
+    cursor: pointer;
+}*/
 #device-menu{
     float: left;
     margin-top: 34px;
-     margin-bottom: 25px;
-    /*width: 50%;*/
+    margin-bottom: 25px;
+    width: 100%;
 }
 #device-list{
     float: left;
@@ -142,15 +148,23 @@ color: red;
     overflow-x:scroll;
     */
 }
-.device-switch{
+a:hover,.footerpart:hover,.menupart:hover,.device-menupart:hover,.device:hover,.timetable-scenario:hover,.scenario:hover{
+    cursor: pointer;
+}
+.switch{
     background-repeat: no-repeat;
     background-size: contain;
     width: 24px;
     height: 24px;
 }
-.device-switch.off{background-image: url(../img/icon_sun@2x.png);}
-.device-switch.on{background-image: url(../img/icon_sun_2@2x.png);}
-
+/*.switch.lamp-off{background-image: url(../img/icon_sun@2x.png);}
+.switch.lamp-on{background-image: url(../img/icon_sun_2@2x.png);}
+.switch.termo-off{background-image: url(../img/icon_temperature@2x.png);}
+.switch.termo-on{background-image: url(../img/icon_temperature_2@2x.png);}*/
+.lamp-off{background-image: url(../img/icon_sun@2x.png);}
+.lamp-on{background-image: url(../img/icon_sun_2@2x.png);}
+.termo-off{background-image: url(../img/icon_temperature@2x.png);}
+.termo-on{background-image: url(../img/icon_temperature_2@2x.png);}
 /*
 Look for space betweem switch and name
 */
@@ -182,8 +196,10 @@ Look for space betweem switch and name
     color: rgba(51,51,51,1);
     float: left;
     font-size: 18px;
+    font-weight: bold;
     margin-right: 13px;
 }
+/*RECENT*/
 #recent{
     background-color: lightblue;
     float: left;
@@ -195,7 +211,7 @@ Look for space betweem switch and name
     background-repeat: no-repeat;
     background-size: auto 100%;
     border-radius: 25px;
-    margin-top: 25px;
+    margin-top: 40px;
     padding: 25px 20px 0px 20px;
     min-width: 500px;
     min-height: 331px;
@@ -211,7 +227,7 @@ Look for space betweem switch and name
 }
 #recent-info{
     float: left;
-    max-width: 300px;
+    max-width: 360px;
 }
 
 #timetable{
@@ -220,6 +236,9 @@ Look for space betweem switch and name
     float: right;
     max-height: 331px;
     overflow: hidden;
+}
+#timetable .device{
+    margin-bottom: 15px;
 }
 .timetable-scenario{
     background-color: rgba(247,247,247,1);
@@ -258,8 +277,35 @@ Look for space betweem switch and name
     background-image: url(../img/cloud-drizzle@2x.png);
 }
 
-#scenario{
+/*SCENARIO*/
+#scenario-info{
     background-color: lightsteelblue;
     float: left;
     width: 50%;
+    /*padding-left: 26px;*/
+}
+#scenario-list{
+    margin-top: 20px;
+    margin-left: 26px;
+}
+#scenario-menu{
+    margin-left: 26px;
+}
+.scenario{
+    background-color: rgba(247,247,247,1);
+    border-radius: 20px;
+    float: left;
+    width: 170px;
+    height: 70px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+
+.navigation{
+    float: right;
+    margin-right: 44px;
+    width: 16px;
+    height: 16px;
 }

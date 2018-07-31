@@ -21,7 +21,7 @@
 		<div id="recent-board">
 			<div id="recent-info">
 				<div id="recent-greting">
-					Привет, Геннадий!
+					Привет, Олег!
 				</div>
 				<div id="recent-status">
 					Двери и окна закрыты, сигнализация включена.
@@ -47,23 +47,56 @@
 				</div>
 			</div>
 			<div id="timetable">
-				<div class="timetable-scenario">
-					
+				<div class="device device-type-lamp device-place-kitchen">
+					<div class="switch termo-off"></div>
+					<div class="device-name">Philips Cooler</div>
+					<div class="device-status">Начнет охлаждать в 16:30</div>
 				</div>
-				<div class="timetable-scenario">
-					
+				<div class="device device-type-lamp device-place-kitchen">
+					<div class="switch lamp-off"></div>
+					<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
+					<div class="device-status">Включится в 17:00</div>
 				</div>
-				<div class="timetable-scenario">
-					
+				<div class="device device-type-lamp device-place-kitchen">
+					<div class="switch lamp-off"></div>
+					<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
+					<div class="device-status">Включится в 17:00</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
-	<div id="scenario">
-		<div class="main-header">Избранные сценарии</div>
+	<div id="scenario-info">
+		<div id="scenario-menu">
+			<div class="main-header">Избранные сценарии</div>
+			<div class="navigation"> > </div>
+			<div class="navigation"> < </div>
+		</div>
+
+		<div  id="scenario-list">
+			<div class="scenario">
+				<div class="switch lamp-on"></div>
+				<div class="device-name">Выключить весь свет в доме и во дворе</div>
+				<div class="device-status"></div>
+			</div>
+			<div class="scenario">
+				<div class="switch termo-on"></div>
+				<div class="device-name">Набрать горячую ванну</div>
+				<div class="device-status">Начнется в 18:00</div>
+			</div>
+			<div class="scenario">
+				<div class="switch termo-on"></div>
+				<div class="device-name">Сделать пол тёплым во всей квартире</div>
+				<div class="device-status"></div>
+			</div>
+			<div class="scenario">
+				<div class="switch lamp-on"></div>
+				<div class="device-name">Включить свет в коридоре</div>
+				<div class="device-status"></div>
+			</div>
+		</div>
 	</div>
-	<div id="device">
+	<div id="device-info">
 		<div id="device-menu">
 			<div class="main-header">Избранные устройства</div>
 			<div class="device-menupart active">Все</div>
@@ -71,24 +104,37 @@
 			<div class="device-menupart">Зал</div>
 			<div class="device-menupart">Лампочки</div>
 			<div class="device-menupart">Камеры</div>
+			<div class="navigation"> > </div>
+			<div class="navigation"> < </div>
 		</div>
 		<div  id="device-list">
-			<div class="device-favored device-type-lamp device-place-kitchen">
-				<div class="device-switch on"></div>
+			<div class="device device-type-lamp device-place-kitchen">
+				<div class="switch lamp-on"></div>
 				<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device-favored device-type-cam device-place-hall">
-				<div class="device-switch off"></div>
+			<div class="device device-type-cam device-place-hall">
+				<div class="switch lamp-off"></div>
 				<div class="device-name">D-Link Omna 180 Cam</div>
 				<div class="device-status">Включится в 17:00</div>
 			</div>
-			<div class="device-favored device-type-termo device-place-hall">
-				
+			<div class="device device-type-termo device-place-hall">
+				<div class="switch termo-off"></div>
+				<div class="device-name">Elgato Eve Degree Connected</div>
+				<div class="device-status">Выключено до 17:00</div>
+			</div>
+			<div class="device device-type-lamp device-place-hall">
+				<div class="switch lamp-off"></div>
+				<div class="device-name">LIFX Mini Day & Dusk A60 E27</div>
+				<div class="device-status">Включится в 17:00</div>
+			</div>
+			<div class="device device-type-air device-place-kitchen">
+				<div class="switch lamp-on"></div>
+				<div class="device-name">Xiaomi Mi Air Purifier 2S</div>
+				<div class="device-status">Включено</div>
 			</div>
 		</div>
 	</div>
-
 </main>
 <footer>
 	<a href="#"><div class="footerpart">Помощь</div></a>
