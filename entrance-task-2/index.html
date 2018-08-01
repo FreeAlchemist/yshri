@@ -69,8 +69,10 @@
 	<div id="scenario-info">
 		<div id="scenario-menu">
 			<div class="main-header">Избранные сценарии</div>
-			<div class="navigation"> > </div>
-			<div class="navigation"> < </div>
+			<div class="nav">
+				<div class="navpart scroll-left active" onclick="moveLeft('scenario-list')"></div>
+				<div class="navpart scroll-right active" onclick="moveRight('scenario-list')"></div>
+			</div>
 		</div>
 
 		<div  id="scenario-list">
@@ -94,18 +96,35 @@
 				<div class="device-name">Включить свет в коридоре</div>
 				<div class="device-status"></div>
 			</div>
+			<div class="scenario">
+				<div class="switch termo-on"></div>
+				<div class="device-name">Сделать пол тёплым во всей квартире</div>
+				<div class="device-status"></div>
+			</div>
+			<div class="scenario">
+				<div class="switch termo-on"></div>
+				<div class="device-name">Сделать пол тёплым во всей квартире</div>
+				<div class="device-status"></div>
+			</div>
+			<div class="scenario">
+				<div class="switch termo-on"></div>
+				<div class="device-name">Сделать пол тёплым во всей квартире</div>
+				<div class="device-status"></div>
+			</div>
 		</div>
 	</div>
 	<div id="device-info">
 		<div id="device-menu">
 			<div class="main-header">Избранные устройства</div>
 			<div class="device-menupart active">Все</div>
-			<div class="device-menupart">Кухня</div>
+			<div class="device-menupart" onclick="deviceFilter('device-place-kitchen')">Кухня</div>
 			<div class="device-menupart">Зал</div>
 			<div class="device-menupart">Лампочки</div>
 			<div class="device-menupart">Камеры</div>
-			<div class="navigation"> > </div>
-			<div class="navigation"> < </div>
+			<div class="nav">
+				<div class="navpart scroll-left active" onclick="moveLeft('device-list')"></div>
+				<div class="navpart scroll-right active" onclick="moveRight('device-list')"></div>
+			</div>
 		</div>
 		<div  id="device-list">
 			<div class="device device-type-lamp device-place-kitchen">
@@ -123,6 +142,11 @@
 				<div class="device-name">Elgato Eve Degree Connected</div>
 				<div class="device-status">Выключено до 17:00</div>
 			</div>
+			<div class="device device-type-termo device-place-kitchen">
+				<div class="switch termo-on"></div>
+				<div class="device-name">Elgato Eve Degree Connected</div>
+				<div class="device-status">Включено</div>
+			</div>
 			<div class="device device-type-lamp device-place-hall">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">LIFX Mini Day & Dusk A60 E27</div>
@@ -132,6 +156,11 @@
 				<div class="switch lamp-on"></div>
 				<div class="device-name">Xiaomi Mi Air Purifier 2S</div>
 				<div class="device-status">Включено</div>
+			</div>
+			<div class="device device-type-lamp device-place-hall">
+				<div class="switch lamp-off"></div>
+				<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
+				<div class="device-status">Выключено до 17:00</div>
 			</div>
 		</div>
 	</div>

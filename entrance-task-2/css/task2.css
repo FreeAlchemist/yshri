@@ -5,7 +5,7 @@ body{
     /*padding-top: 35px;*/
 }
 header{
-    background-color: coral;
+    background-color: #FFCCFF;
     border-bottom: solid #F0F0F0 1px;
     position: absolute;
     top: 0px;
@@ -27,7 +27,7 @@ main{
     overflow: hidden;
 }
 footer{
-    background-color: skyblue;
+    background-color: #CCCCFF;
     height: 39.5px;
     font-family: ArialMT, Arial;
     position: absolute;
@@ -49,11 +49,12 @@ footer{
     font-weight: bold;
 }
 .footerpart:hover{
-    color: rgb(255,89,89);
+    color: #CC3300;
     /*cursor: pointer;*/
+    opacity: 0.8;
 }
 .footerpart:active{
-    color: red;
+    color: #CC3300;
     opacity: 1;
 }
 a:hover{
@@ -92,11 +93,16 @@ color: red;
     font-weight: bold;
 }
 .menupart:hover{
-    color: rgb(255,89,89);
-    /*cursor: pointer;*/
+   color: #CC3300;
+   opacity: 0.8;
 }
 .menupart:active{
-    color: red;
+    color: #CC3300;
+    opacity: 1;
+}
+.menupart.active:hover{
+    cursor: default;
+    color: #333333;
     opacity: 1;
 }
 .active{
@@ -109,14 +115,11 @@ color: red;
     float: left;
     width: 100%;
 }
-.device{
-    background-color: rgba(247,247,247,1);
-    border-radius: 20px;
+#device-menu{
     float: left;
-    width: 170px;
-    height: 90px;
-    margin-right: 15px;
-    padding: 15px;
+    margin-top: 34px;
+    margin-bottom: 25px;
+    width: 100%;
 }
 .device-menupart{
     background-color: rgba(247,247,247,1);
@@ -131,24 +134,30 @@ color: red;
     font-size: 13px;
     font-weight: bold;
 }
-/*.device-menupart:hover{
-    cursor: pointer;
-}*/
-#device-menu{
-    float: left;
-    margin-top: 34px;
-    margin-bottom: 25px;
-    width: 100%;
-}
 #device-list{
     float: left;
     width: 100%;
-    /*
-    mobile
-    overflow-x:scroll;
-    */
+    max-height: 120px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    left: 0px;
+    position: relative;
 }
-a:hover,.footerpart:hover,.menupart:hover,.device-menupart:hover,.device:hover,.timetable-scenario:hover,.scenario:hover{
+.device{
+    background-color: rgba(247,247,247,1);
+    border-radius: 20px;
+    /*float: left;*/
+    width: 170px;
+    height: 90px;
+    margin-right: 15px;
+    padding: 15px;
+    flex-shrink: 0;
+}
+.device:hover{
+    box-shadow: 0 2px 6px 0 ;
+}
+a:hover,.footerpart:hover,.menupart:hover,.device-menupart:hover,.device:hover,.timetable-scenario:hover,.scenario:hover,.navpart:hover{
     cursor: pointer;
 }
 .switch{
@@ -185,6 +194,10 @@ Look for space betweem switch and name
 
 .device-menupart.active{
     background-color: rgba(255,217,62,1);
+}
+.device-menupart.active:hover{
+    background-color: rgba(255,217,62,1);
+    cursor: default;
 }
 .device-menupart:hover{
     background-color: rgba(255,217,62,0.5);
@@ -285,8 +298,10 @@ Look for space betweem switch and name
     /*padding-left: 26px;*/
 }
 #scenario-list{
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 26px;
+    display: flex;
+    flex-wrap: wrap;
 }
 #scenario-menu{
     margin-left: 26px;
@@ -300,12 +315,35 @@ Look for space betweem switch and name
     margin-right: 15px;
     margin-bottom: 15px;
     padding: 15px;
+    flex-shrink: 0;
+}
+.scenario:hover{
+    box-shadow: 0 2px 6px 0 ;
 }
 
-
-.navigation{
+.nav{
     float: right;
     margin-right: 44px;
+}
+.navpart{
+    float: left;
     width: 16px;
     height: 16px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
+.navpart:hover{
+    background-color: coral;
+    border-radius: 5px;
+}
+.navpart.active{
+    opacity: 1;
+}
+.scroll-left{
+    background-image: url(../img/MCopy@2x.png);
+}
+.scroll-right{
+    background-image: url(../img/MCopy@2x.png);
+    transform: scaleX(-1);
 }
