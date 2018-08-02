@@ -48,7 +48,7 @@
 			</div>
 			<div id="timetable">
 				<div class="device device-type-lamp device-place-kitchen">
-					<div class="switch termo-off"></div>
+					<div class="switch temp-off"></div>
 					<div class="device-name">Philips Cooler</div>
 					<div class="device-status">Начнет охлаждать в 16:30</div>
 				</div>
@@ -70,8 +70,8 @@
 		<div id="scenario-menu">
 			<div class="main-header">Избранные сценарии</div>
 			<div class="nav">
-				<div class="navpart scroll-left active" onclick="moveLeft('scenario-list')"></div>
-				<div class="navpart scroll-right active" onclick="moveRight('scenario-list')"></div>
+				<div class="navpart scroll-left active" onclick="scenarioMoveLeft('scenario-list')"></div>
+				<div class="navpart scroll-right active" onclick="scenarioMoveRight('scenario-list')"></div>
 			</div>
 		</div>
 
@@ -82,12 +82,12 @@
 				<div class="device-status"></div>
 			</div>
 			<div class="scenario">
-				<div class="switch termo-on"></div>
+				<div class="switch temp-on"></div>
 				<div class="device-name">Набрать горячую ванну</div>
 				<div class="device-status">Начнется в 18:00</div>
 			</div>
 			<div class="scenario">
-				<div class="switch termo-on"></div>
+				<div class="switch temp-on"></div>
 				<div class="device-name">Сделать пол тёплым во всей квартире</div>
 				<div class="device-status"></div>
 			</div>
@@ -97,17 +97,17 @@
 				<div class="device-status"></div>
 			</div>
 			<div class="scenario">
-				<div class="switch termo-on"></div>
+				<div class="switch temp-on"></div>
 				<div class="device-name">Сделать пол тёплым во всей квартире</div>
 				<div class="device-status"></div>
 			</div>
 			<div class="scenario">
-				<div class="switch termo-on"></div>
+				<div class="switch temp-on"></div>
 				<div class="device-name">Сделать пол тёплым во всей квартире</div>
 				<div class="device-status"></div>
 			</div>
 			<div class="scenario">
-				<div class="switch termo-on"></div>
+				<div class="switch temp-on"></div>
 				<div class="device-name">Сделать пол тёплым во всей квартире</div>
 				<div class="device-status"></div>
 			</div>
@@ -116,48 +116,50 @@
 	<div id="device-info">
 		<div id="device-menu">
 			<div class="main-header">Избранные устройства</div>
-			<div class="device-menupart active">Все</div>
+			<div class="device-menupart active" onclick="deviceFilter('device')">Все</div>
 			<div class="device-menupart" onclick="deviceFilter('device-place-kitchen')">Кухня</div>
-			<div class="device-menupart">Зал</div>
-			<div class="device-menupart">Лампочки</div>
-			<div class="device-menupart">Камеры</div>
+			<div class="device-menupart" onclick="deviceFilter('device-place-hall')">Зал</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-lamp')">Лампочки</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-cam')">Камеры</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-temp')">Термостаты</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-air')">Кондиционеры</div>
 			<div class="nav">
-				<div class="navpart scroll-left active" onclick="moveLeft('device-list')"></div>
-				<div class="navpart scroll-right active" onclick="moveRight('device-list')"></div>
+				<div class="navpart scroll-left active" onclick="deviceMoveLeft()"></div>
+				<div class="navpart scroll-right active" onclick="deviceMoveRight()"></div>
 			</div>
 		</div>
 		<div  id="device-list">
-			<div class="device device-type-lamp device-place-kitchen">
+			<div class="device device-type-lamp device-place-kitchen" onclick="deviceShowPopup()">
 				<div class="switch lamp-on"></div>
 				<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device device-type-cam device-place-hall">
+			<div class="device device-type-cam device-place-hall" onclick="deviceShowPopup()">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">D-Link Omna 180 Cam</div>
 				<div class="device-status">Включится в 17:00</div>
 			</div>
-			<div class="device device-type-termo device-place-hall">
-				<div class="switch termo-off"></div>
+			<div class="device device-type-temp device-place-hall" onclick="deviceShowPopup()">
+				<div class="switch temp-off"></div>
 				<div class="device-name">Elgato Eve Degree Connected</div>
 				<div class="device-status">Выключено до 17:00</div>
 			</div>
-			<div class="device device-type-termo device-place-kitchen">
-				<div class="switch termo-on"></div>
-				<div class="device-name">Elgato Eve Degree Connected</div>
+			<div class="device device-type-temp device-place-kitchen" onclick="deviceShowPopup()">
+				<div class="switch temp-on"></div>
+				<div class="device-name">Xiaomi Warm Floor</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device device-type-lamp device-place-hall">
+			<div class="device device-type-lamp device-place-hall" onclick="deviceShowPopup()">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">LIFX Mini Day & Dusk A60 E27</div>
 				<div class="device-status">Включится в 17:00</div>
 			</div>
-			<div class="device device-type-air device-place-kitchen">
+			<div class="device device-type-air device-place-kitchen" onclick="deviceShowPopup()">
 				<div class="switch lamp-on"></div>
 				<div class="device-name">Xiaomi Mi Air Purifier 2S</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device device-type-lamp device-place-hall">
+			<div class="device device-type-lamp device-place-hall" onclick="deviceShowPopup()">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
 				<div class="device-status">Выключено до 17:00</div>
@@ -171,6 +173,18 @@
 	<a href="#"><div class="footerpart">Разработчикам</div></a>
 	<a href="#"><div class="footerpart">Условия использования</div></a>
 </footer>
+<div id=popup-floor class="overlay">
+	<form class="popup-form">
+		<input type="button" name="popup-floor-apply" value="Применить" class="popup-btn popup-apply" onclick="deviceHidePopup()">
+		<input type="button" name="popup-floor-close" value="Закрыть" class="popup-btn popup-close" onclick="deviceHidePopup()">
+	</form>
+</div>
+<div id=popup-temp class="overlay">
+	
+</div>
+<div id=popup-lamp class="overlay">
+	
+</div>
 <script type="text/javascript" src="js/task2.js"></script>
 </body>
 </html>
