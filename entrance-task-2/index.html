@@ -116,50 +116,50 @@
 	<div id="device-info">
 		<div id="device-menu">
 			<div class="main-header">Избранные устройства</div>
-			<div class="device-menupart active" onclick="deviceFilter('device')">Все</div>
-			<div class="device-menupart" onclick="deviceFilter('device-place-kitchen')">Кухня</div>
-			<div class="device-menupart" onclick="deviceFilter('device-place-hall')">Зал</div>
-			<div class="device-menupart" onclick="deviceFilter('device-type-lamp')">Лампочки</div>
-			<div class="device-menupart" onclick="deviceFilter('device-type-cam')">Камеры</div>
-			<div class="device-menupart" onclick="deviceFilter('device-type-temp')">Термостаты</div>
-			<div class="device-menupart" onclick="deviceFilter('device-type-air')">Кондиционеры</div>
+			<div class="device-menupart active" onclick="deviceFilter('device',event)">Все</div>
+			<div class="device-menupart" onclick="deviceFilter('device-place-kitchen',event)">Кухня</div>
+			<div class="device-menupart" onclick="deviceFilter('device-place-hall',event)">Зал</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-lamp',event)">Лампочки</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-cam',event)">Камеры</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-temp',event)">Термостаты</div>
+			<div class="device-menupart" onclick="deviceFilter('device-type-air',event)">Кондиционеры</div>
 			<div class="nav">
-				<div class="navpart scroll-left active" onclick="deviceMoveLeft()"></div>
-				<div class="navpart scroll-right active" onclick="deviceMoveRight()"></div>
+				<div class="navpart scroll-left active" onclick="deviceMoveLeft(event)"></div>
+				<div class="navpart scroll-right active" onclick="deviceMoveRight(event)"></div>
 			</div>
 		</div>
 		<div  id="device-list">
-			<div class="device device-type-lamp device-place-kitchen" onclick="deviceShowPopup('lamp')">
+			<div class="device device-type-lamp device-place-kitchen" onclick="deviceShowPopup('lamp',event)">
 				<div class="switch lamp-on"></div>
 				<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device device-type-temp device-place-hall" onclick="deviceShowPopup('temp')">
+			<div class="device device-type-temp device-place-hall" onclick="deviceShowPopup('temp',event)">
 				<div class="switch temp-off"></div>
 				<div class="device-name">Elgato Eve Degree Connected</div>
 				<div class="device-status">Выключено до 17:00</div>
 			</div>
-			<div class="device device-type-temp device-place-kitchen" onclick="deviceShowPopup('floor')">
+			<div class="device device-type-temp device-place-kitchen" onclick="deviceShowPopup('floor',event)">
 				<div class="switch temp-on"></div>
 				<div class="device-name">Xiaomi Warm Floor</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device device-type-cam device-place-hall" onclick="deviceShowPopup('cam')">
+			<div class="device device-type-cam device-place-hall" onclick="deviceShowPopup('cam',event)">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">D-Link Omna 180 Cam</div>
 				<div class="device-status">Включится в 17:00</div>
 			</div>
-			<div class="device device-type-lamp device-place-hall" onclick="deviceShowPopup('lamp')">
+			<div class="device device-type-lamp device-place-hall" onclick="deviceShowPopup('lamp',event)">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">LIFX Mini Day & Dusk A60 E27</div>
 				<div class="device-status">Включится в 17:00</div>
 			</div>
-			<div class="device device-type-air device-place-kitchen" onclick="deviceShowPopup('air')">
+			<div class="device device-type-air device-place-kitchen" onclick="deviceShowPopup('air',event)">
 				<div class="switch lamp-on"></div>
 				<div class="device-name">Xiaomi Mi Air Purifier 2S</div>
 				<div class="device-status">Включено</div>
 			</div>
-			<div class="device device-type-lamp device-place-hall" onclick="deviceShowPopup('lamp')">
+			<div class="device device-type-lamp device-place-hall" onclick="deviceShowPopup('lamp',event)">
 				<div class="switch lamp-off"></div>
 				<div class="device-name">Xiaomi Yeelight LED Smart Bulb</div>
 				<div class="device-status">Выключено до 17:00</div>
@@ -174,7 +174,7 @@
 	<a href="#"><div class="footerpart">Условия использования</div></a>
 </footer>
 <div id=popup class="overlay">
-	<form class="popup-form">
+	<form id="popup-form">
 		<div id="popup-main">
 			<div id="popup-info"></div>
 			<div id="popup-name"></div>
@@ -182,8 +182,8 @@
 			<div id="popup-menu"></div>
 			<div id="popup-slider"></div>
 		</div>
-		<input type="button" id="popup-apply" name="popup-apply" value="Применить" class="popup-btn popup-apply" onclick="deviceHidePopup()">
-		<input type="button" id="popup-close" name="popup-close" value="Закрыть" class="popup-btn popup-close" onclick="deviceHidePopup()">
+		<input type="button" id="popup-apply" name="popup-apply" value="Применить" class="popup-btn popup-apply" onclick="deviceHidePopup(event)">
+		<input type="button" id="popup-close" name="popup-close" value="Закрыть" class="popup-btn popup-close" onclick="deviceHidePopup(event)">
 	</form>
 </div>
 <script type="text/javascript" src="js/task2.js"></script>

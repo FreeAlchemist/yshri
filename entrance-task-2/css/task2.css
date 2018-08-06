@@ -1,4 +1,5 @@
-body{font-family: Arial-BoldMT, Arial;}
+body{font-family: Arial-BoldMT, Arial;
+overflow: hidden;}
 header{
     border-bottom: solid #F0F0F0 1px;
     position: absolute;
@@ -350,12 +351,13 @@ a:hover,.footerpart:hover,.menupart:hover,.device-menupart:hover,.device:hover,.
 }
 #popup{
     display: none;
-    transform-origin: 0% 100%;
+    /*transform-origin: 0% 0%;*/
 }
-.popup-form{
+#popup-form{
     position: absolute;
     top: 189px;
     left: 367px;
+    transform-origin: 0% 0%;
 }
 #popup-main{
     background-color: rgba(255,255,255,1);
@@ -398,103 +400,114 @@ a:hover,.footerpart:hover,.menupart:hover,.device-menupart:hover,.device:hover,.
     width: 100%;
     /*margin-top: 20px;*/
 }
+
+/*
+Chrome, Safari и Opera
+-webkit
+
+Mozilla
+-moz
+Для стилизации трека добавляем псевдоэлемент ::-moz-range-track
+Прогресс выше
+Ползунок с псевдоэлементов ::-moz-range-thumb
+
+InternetExplorer
+-ms
+Для стилизации линии трека используем три псевдоэлемента, так как инпут поделен на три части, это ::-ms-track, ::-ms-fill-lower, ::-ms-fill-upper.
+Ползунок - ::-ms-thumb
+::-ms-fill-lower
+::-ms-fill-upper
+::-ms-track
+::-ms-thumb
+::-ms-ticks-before
+::-ms-ticks-after
+::-ms-ticks
+::-ms-tooltip
+
+-weklit
+- для мозиллы moz,
+- для оперы o,
+- для IE ms
+*/
+
 input[type=range] {
   -webkit-appearance: none;
-  margin: 18px 0;
   margin: 0px;
+  padding: 0px;
   width: 100%;
+  border: none;
 }
 input[type=range]:focus {
   outline: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  /*height: 8.4px;*/
   cursor: pointer;
   animate: 0.2s;
-  /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
   background: transparent;
-  /*border-radius: 1.3px;*/
-  /*border: 0.2px solid #010101;*/
-
   border-radius: 30px;
   height: 60px;
 }
+input[type=range]::-moz-range-track {
+  width: 100%;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-radius: 30px;
+  height: 60px;
+
+}
+input[type=range]::-ms-track {
+  color: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-radius: 30px;
+  height: 60px;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: transparent;
+}
+input[type=range]::-ms-fill-upper {
+    background: transparent;
+}
+
+
+
 input[type=range]::-webkit-slider-thumb {
-  /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-  /*border: 1px solid #000000;*/
   height: 60px;
   width: 60px;
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
   -webkit-appearance: none;
-  /*margin-top: -14px;*/
-
-  /*border: 3px solid rgba(51,51,51,0.10);*/
-  border: 3px solid red;
-  border: 4px solid #FFFFFF;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  /*background: #367ebd;*/
-  box-shadow: inset 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #3071a9;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  border: 3px solid rgba(51,51,51,0.10);
+  -webkit-box-shadow: 0 0 0 4px #FFFFFF;
+  box-shadow: 0 0 0 4px #FFFFFF;
 }
 input[type=range]::-moz-range-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  animate: 0.2s;
+  height: 52px;
+  width: 52px;
+  border-radius: 50%;
   background: transparent;
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: #2a6495;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type=range]::-ms-fill-upper {
-  background: #3071a9;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  cursor: pointer;
+  border: 3px solid rgba(51,51,51,0.10);
+  -moz-box-shadow: 0 0 0 4px #FFFFFF;
+  box-shadow: 0 0 0 4px #FFFFFF;
 }
 input[type=range]::-ms-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: transparent;
   cursor: pointer;
+  border: 3px solid rgba(51,51,51,0.10);
+  box-shadow: 0 0 0 4px #FFFFFF;
 }
-input[type=range]:focus::-ms-fill-lower {
-  background: #3071a9;
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #367ebd;
-}
+
 .mintemp,.maxtemp{
     color: red;
     /*color: rgba(255,255,255,1);*/
@@ -503,11 +516,10 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .mintemp{left:0px;}
 .maxtemp{right:0px;}
+
 .slider{
-    /*background-image: linear-gradient(-85deg, #FFE682 2%, #FF9E00 98%);*/
     border-radius: 30px;
     float: left;
-    /*width: 580px;*/
     height: 60px;
 }
 .slider-lamp{
@@ -551,9 +563,35 @@ input[type=range]:focus::-ms-fill-upper {
     100% {opacity: 1;}
 }
 
-@keyframes perspectiveIn {
+/*@keyframes translateIn {
     0% { 
-        transform: scale(0);
+        transform: translate(0px,160px);
+         transform: translate(0px,530px) scale(0);
+        transform: translate(-327px,530px) scale(0);
+        transform: translate(-112px,530px) scale(0);
+        transform: translate(-112px,650px) scale(0);
+        transform: translate(103px,530px) scale(0);
+        transform: translate(318px,530px) scale(0);
+        transform: translate(533px,530px) scale(0);
+        transform: translate(748px,160px) scale(0);
+    }
+    100% {
+        transform: translate(0px,0px) scale(1);
+    }
+}*/
+
+@keyframes translateOut {
+    0% { 
+        transform: translate(0px,0px);
+    }
+    100% {
+         transform: translate(-112px,530px) scale(0.3);
+    }
+}
+
+@keyframes scaleIn {
+    0% { 
+        transform: scale(0.5);
     }
     100% {
         transform: scale(1);
@@ -561,16 +599,16 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 #device-list .device{
-    /*-webkit-animation: fadeIn 1s ease-in-out;*/
     animation: fadeIn 1s ease-in-out;
 }
 
-#popup{
-    /*-webkit-animation: fadeIn 1s ease-in-out;*/
-    animation: perspectiveIn 2s ease-in-out, fadeIn 2s ease-in-out;
-    animation: perspectiveIn 2s ease-in-out;
-    /*animation: fadeIn 2s ease-in-out;*/
+/*#popup-form{
+    animation: translateIn 0.4s linear, fadeIn 0.4s ease-in-out;
 }
+
+#popup-form.deviceHide{
+    animation: translateOut 0.4s linear;
+}*/
 
 
 
