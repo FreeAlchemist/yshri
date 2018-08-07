@@ -5,6 +5,11 @@ function deviceMoveLeft(){
 	newposition = currentposition + 215
 	if(currentposition < 0){
 		el.style.left = newposition+"px"
+		// var aniLeft = el.animate([
+		// 	{transform:'translate('+currentposition+'px,0px)'},
+		// 	{transform:'translate('+newposition+'px,0px)'}
+		// 	],200)
+		// aniLeft.onfinish = function(){el.style.left = newposition+"px"}
 	}
 }
 function deviceMoveRight(){
@@ -13,10 +18,19 @@ function deviceMoveRight(){
 	currentposition = parseInt(elstyle.left)
 	newposition = currentposition - 215
 	currentwidth = parseInt(elstyle.width)
-	var elements = el.getElementsByClassName('device')
+
+	// var elements = el.getElementsByClassName('device')
+	var elements = el.getElementsByClassName('filtered')
 	var diff = currentwidth - (215 * elements.length)
+	// console.log('elements.length '+elements.length)
+	// console.log(newposition+' > '+diff)
 	if(newposition > diff){
 		el.style.left = newposition+"px"
+		// var aniRight = el.animate([
+		// 	{transform:'translate('+currentposition+'px,0px)'},
+		// 	{transform:'translate('+newposition+'px,0px)'}
+		// 	],200)
+		// aniRight.onfinish = function(){el.style.left = newposition+"px"}
 	}
 }
 function deviceFilter(elclass,event){
@@ -34,10 +48,22 @@ function deviceFilter(elclass,event){
 	var allelements = el.getElementsByClassName('device')
 	var elements = el.getElementsByClassName(elclass)
 	for (var i = allelements.length - 1; i >= 0; i--) {
+		// var fadeOut = allelements[i].animate([
+		// 	{transform:'scale(1)',opacity:1},
+		// 	{transform:'scale(0.8)',opacity:0}
+		// 	],400)
+		allelements[i].classList.remove('filtered', 'unfiltered')
+		allelements[i].classList.add('unfiltered')
 		allelements[i].style.display = "none"
 	}
 	for (var i = elements.length - 1; i >= 0; i--) {
-		elements[i].style.display = "block"
+		// var fadeIn = allelements[i].animate([
+		// 	{transform:'scale(0.8)',opacity:0},
+		// 	{transform:'scale(1)',opacity:1}
+		// 	],400)
+		elements[i].classList.remove('unfiltered')
+		elements[i].classList.add('filtered')
+		elements[i].style.display = "block"	
 	}
 }
 function showTemp(event){
@@ -50,8 +76,6 @@ function showTemp(event){
 	if(parseInt(elval) > 0){elval = '+'+elval}
 	popupinfo.innerHTML = elval
 }
-
-
 function deviceShowPopup(type,event){
 	// alert(event.currentTarget.className)
 	var event = event || window.event
@@ -66,7 +90,9 @@ function deviceShowPopup(type,event){
 
 	var el = document.getElementById('popup')
 	el.style.display="block"
+	el.setAttribute('class','overlay fadein')
 
+	// var popupform = document.querySelector('#popup-form')
 	var popupform = document.getElementById('popup-form')
 	var popupname = document.getElementById('popup-name')
 	var popupstatus = document.getElementById('popup-status')
@@ -74,44 +100,58 @@ function deviceShowPopup(type,event){
 	var popupmenu = document.getElementById('popup-menu')
 	var popupslider = document.getElementById('popup-slider')
 
+
 	var elposition = currentel.getBoundingClientRect();
 	var elX = elposition.left + window.scrollX;
 	var elY = elposition.right + window.scrollY;
-	var anidiff = 367-elX
+
+	var elX1 = elposition.left
+	var elY1 = elposition.right
+
+	var popupformpos = popupform.getBoundingClientRect();
+	var formX = popupformpos.left + window.scrollX;
+	var formY = popupformpos.right + window.scrollY;
+	var formX1 = popupformpos.left
+	var formY1 = popupformpos.right
+
+	var anidiff = formX-elX
 	if(anidiff > 0){
 		var anidiffmin = parseInt('-'+anidiff)
 	}
 	else{
 		var anidiffmin = Math.abs(parseInt(anidiff))
 	}
+	var clx = event.clientX
+	var cly = event.clientY
+
+	popupform.style.left = clx+'px'
+	popupform.style.top = cly+'px'
+	popupform.setAttribute('class','openpopup')
+
+
 	// console.log(name)
 	// console.log(status)
 	// console.log(currentel.className)
+	// console.log(clx)
+	// console.log(cly)
+
 	// console.log(elX)
 	// console.log(elY)
+	// console.log(elX1)
+	// console.log(elY1)
+	// console.log('----')
+	// console.log(formX)
+	// console.log(formY)
+	// console.log(formX1)
+	// console.log(formY1)
 	// console.log('anidiff')
 	// console.log(anidiff)
 	// console.log(anidiffmin)
 
-	var animation = popupform.animate([
-			// {transform: 'translate(-327px,530px) scale(0)'},
-			{transform: 'translate('+anidiffmin+'px,530px) scale(0)'},
-			{transform: 'translate(0px,0px) scale(1)'}
-		],400)
-	//Animate popup
-	/*
-		 transform: translate(0px,530px) scale(0);
-		transform: translate(-327px,530px) scale(0);
-		transform: translate(-112px,530px) scale(0);
-		transform: translate(-112px,650px) scale(0);
-		transform: translate(103px,530px) scale(0);
-		transform: translate(318px,530px) scale(0);
-		transform: translate(533px,530px) scale(0);
-		transform: translate(748px,160px) scale(0);
-
-
-		transform: translate(0px,0px) scale(1);
-	*/
+	// var animation = popupform.animate([
+	//   {transform: 'translate('+anidiffmin+'px,530px) scale(0)'},
+	//   {transform: 'translate(0px,0px)  scale(1)'}
+	// ], 400);
 
 	popupname.innerHTML=""
 	popupstatus.innerHTML=""
@@ -126,7 +166,7 @@ function deviceShowPopup(type,event){
 	if(info){popupinfo.innerHTML="<div class='"+info+"'><div>"}
 	if(type == 'floor'){
 		if(currenttemp){popupinfo.innerHTML= "<div id='popup-info-temp'>"+currenttemp+"</div><div class='"+info+"'/>"}
-		popupslider.innerHTML="floor slider"
+		popupslider.innerHTML="<div class='slider-wrap'><div class='slider-floor'></div></div>"
 	}
 	else if(type == 'lamp'){
 		popupmenu.innerHTML="<div class='device-menupart active'>Вручную</div><div class='device-menupart'>Дневной свет</div><div class='device-menupart'>Вечерний свет</div><div class='device-menupart'>Рассвет</div>"
@@ -135,7 +175,6 @@ function deviceShowPopup(type,event){
 	else if(type == 'temp'){
 		if(currenttemp){popupinfo.innerHTML= "<div id='popup-info-temp'>"+currenttemp+"</div><div class='"+info+"'/>"}
 		popupmenu.innerHTML="<div class='device-menupart active'>Вручную</div><div class='device-menupart'>Холодно</div><div class='device-menupart'>Тепло</div><div class='device-menupart'>Жарко</div>"
-		// popupslider.innerHTML="<div class='mintemp'>-10</div><div class='maxtemp'>30</div><input type='range' class='slider slider-temp' min='-10' max='30' value='23'/>"
 		popupslider.innerHTML="<input type='range' class='slider slider-temp' min='-10' max='30' value='23' step='1' onchange='showTemp(event)'/>"
 	}
 	else{
@@ -146,9 +185,33 @@ function deviceShowPopup(type,event){
 }
 function deviceHidePopup(event){
 	var el = document.getElementById('popup')
-	// var elform = document.getElementById('popup-form')
-	// elform.setAttribute('class','deviceHide')
-	el.style.display="none"
+	var elform = document.getElementById('popup-form')
+	var currentel = event.currentTarget
+	var currentid = currentel.id
+	if(currentid == 'popup-apply'){
+		elform.setAttribute('class','applypopup')
+		el.setAttribute('class','overlay fadeout')
+		setTimeout(function(){el.style.display='none'},800)
+	}
+	if(currentid == 'popup-close'){
+		elform.setAttribute('class','cancelpopup')
+		el.setAttribute('class','overlay fadeout')
+		setTimeout(function(){el.style.display='none'},800)
+	}
+	// el.setAttribute('class','overlay closepopup')
+	// var elanimation = el.animate([
+	//   {opacity:1},
+	//   {opacity:0}
+	// ], 400);
+
+	// elanimation.onfinish = function(){
+	// 	el.style.display="none"
+	// }
+	// el.addEventListener('transitionend', onTransitionEnd, false)
+
+	// function onTransitionEnd(){
+	// 	el.style.display="none"
+	// }
 }
 function scenarioMoveLeft(elid){
 	var el = document.getElementById(elid)
