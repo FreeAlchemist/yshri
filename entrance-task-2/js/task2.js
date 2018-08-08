@@ -77,7 +77,6 @@ function showTemp(event){
 	popupinfo.innerHTML = elval
 }
 function deviceShowPopup(type,event){
-	// alert(event.currentTarget.className)
 	var event = event || window.event
 	var currentel = event.currentTarget
 	var elinfo = currentel.getElementsByClassName('switch')
@@ -160,13 +159,13 @@ function deviceShowPopup(type,event){
 	popupslider.innerHTML=""
 
 	if(name){popupname.innerHTML=name}
-		else{popupname.innerHTML="Undefined device name"}
+		else{popupname.innerHTML="<p class='alert'>Имя устройства неопределено</p>"}
 	if(status){popupstatus.innerHTML=status}
-		else{popupstatus.innerHTML="Undefined device status"}
+		else{popupstatus.innerHTML="<p class='alert'>Статус устройства неопределен</p>"}
 	if(info){popupinfo.innerHTML="<div class='"+info+"'><div>"}
 	if(type == 'floor'){
 		if(currenttemp){popupinfo.innerHTML= "<div id='popup-info-temp'>"+currenttemp+"</div><div class='"+info+"'/>"}
-		popupslider.innerHTML="<div class='slider-wrap'><div class='slider-floor'></div></div>"
+		popupslider.innerHTML="<div class='slider-wrap'><div class='slider-floor-outer'><div class='slider-floor-sector'></div><div class='slider-floor-inner'>"+currenttemp+"<div class='slider-floor-rotate'><div class='floor-rotate-pointer'></div></div></div></div></div>"
 	}
 	else if(type == 'lamp'){
 		popupmenu.innerHTML="<div class='device-menupart active'>Вручную</div><div class='device-menupart'>Дневной свет</div><div class='device-menupart'>Вечерний свет</div><div class='device-menupart'>Рассвет</div>"
@@ -178,7 +177,7 @@ function deviceShowPopup(type,event){
 		popupslider.innerHTML="<input type='range' class='slider slider-temp' min='-10' max='30' value='23' step='1' onchange='showTemp(event)'/>"
 	}
 	else{
-		popupslider.innerHTML="Undefined device type"
+		popupslider.innerHTML="<p class='alert'>Настройки управления устройством не обнаружены</p>"
 	}
 	if(popupmenu.innerHTML==""){popupmenu.style.display="none"}
 		else{popupmenu.style.display="block"}
