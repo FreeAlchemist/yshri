@@ -633,7 +633,8 @@ input[type=range]::-ms-thumb {
     position: absolute;
     left: 0px;
     top: 0px;
-    transform: rotate(120deg);
+    /* transform: rotate(-130deg); */
+    /* transform: rotate(120deg); */
 }
 .slider-floor-rotate:hover{
     background-color: rgba(247,247,247,0.4);

@@ -86,6 +86,7 @@ function deviceShowPopup(type,event){
 	var name = elname[0].innerHTML
 	var status = elstatus[0].innerHTML
 	var currenttemp = '+23'
+	var currentfloortemp = '+15'
 
 	var el = document.getElementById('popup')
 	el.style.display="block"
@@ -164,9 +165,92 @@ function deviceShowPopup(type,event){
 		else{popupstatus.innerHTML="<p class='alert'>Статус устройства неопределен</p>"}
 	if(info){popupinfo.innerHTML="<div class='"+info+"'><div>"}
 	if(type == 'floor'){
-		if(currenttemp){popupinfo.innerHTML= "<div id='popup-info-temp'>"+currenttemp+"</div><div class='"+info+"'/>"}
-		popupslider.innerHTML="<div class='slider-wrap'><div class='slider-floor-outer'><div class='slider-floor-sector'></div><div class='slider-floor-inner'>"+currenttemp+"<div class='slider-floor-rotate'><div class='floor-rotate-pointer'></div></div></div></div></div>"
+		if(currenttemp){popupinfo.innerHTML= "<div id='popup-info-temp'>"+currentfloortemp+"</div><div class='"+info+"'/>"}
+		popupslider.innerHTML="<div class='slider-wrap'><div class='slider-floor-outer'><div class='slider-floor-sector'></div><div class='slider-floor-inner'>"+currentfloortemp+"<div class='slider-floor-rotate' id='slider-rotate'><div class='floor-rotate-pointer'></div></div></div></div></div>"
+		/*Rotating slider*/
+		var startPoint
+		var currentPoint
+		var finalPoint
+		var elrotate = document.getElementById('slider-rotate')
+		elrotate.addEventListener('mousedown',mouseDown)
+		elrotate.addEventListener('mouseup',mouseUp)
+		var currentTransform = elrotate.style.transform
+		// var degree = -130
+		var degree
+		// elrotate.style.transform = currentTransform+ " rotate("+degree+"deg)"
+
+		function mouseDown(event){
+					this.style.backgroundColor = 'rgba(200,100,50,0.5)'
+				startPoint = {
+					x: event.x,
+					y: event.y
+				}
+				// console.log('startPoint')
+				// console.log(startPoint)
+				// console.log(x+' : '+y)
+				elrotate.addEventListener('mousemove',mouseMove)
+		}
+
+		function mouseMove(event){
+			this.style.backgroundColor = 'rgba(100,100,200,0.5)'
+					currentPoint = {
+						x: event.x,
+						y: event.y
+					}
+					// console.log('currentPoint')
+					// console.log(currentPoint)
+					degree = Math.atan2(currentPoint.y - startPoint.y, currentPoint.x - startPoint.x) * 180.0 / Math.PI
+					elrotate.style.transform = currentTransform+ " rotate("+degree+"deg)"
+		}
+
+		function mouseUp(event){
+			this.style.backgroundColor = 'rgba(100,200,50,0.5)'
+			finalPoint = {
+				x: event.x,
+				y: event.y
+			}
+			// console.log('finalPoint')
+			// console.log(finalPoint)
+			elrotate.removeEventListener('mousemove',mouseMove)
+		}
+
 	}
+
+/*
+
+var startPoint
+var defaultTransform = document.getElementById("rotator").style.transform
+
+function mouseMove(event) {
+	var el = document.getElementById("rotator")
+	
+	var endPoint = {
+		x: event.x,
+		y: event.y
+	}
+	var degree = Math.atan2(endPoint.y - startPoint.y, endPoint.x - startPoint.x) * 180.0 / Math.PI
+	if (degree )
+	el.style.transform = defaultTransform + " rotate("+degree+"deg)"
+}
+
+function mouseDown(event) {
+	startPoint = {
+		x: event.x,
+		y: event.y
+	}
+
+	document.addEventListener("mousemove", mouseMove);
+	document.addEventListener("mouseup", mouseUp);
+}
+
+function mouseUp(event) {
+	document.removeEventListener("mousemove", mouseMove)
+}
+
+document.getElementById("rotator").addEventListener("mousedown", mouseDown);
+*/
+
+
 	else if(type == 'lamp'){
 		popupmenu.innerHTML="<div class='device-menupart active'>Вручную</div><div class='device-menupart'>Дневной свет</div><div class='device-menupart'>Вечерний свет</div><div class='device-menupart'>Рассвет</div>"
 		popupslider.innerHTML="<input type='range' class='slider slider-lamp' min='10' max='100' value='75'/>"
@@ -233,3 +317,4 @@ function scenarioMoveRight(elid){
 		el.style.left = newposition+"px"
 	}
 }
+
